@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portside Hospitality Cleaning | Hotel-Level Cleaning in Atlanta, GA</title>
+<meta name="description" content="Experience luxury hospitality in your home. Portside offers residential, Airbnb & commercial cleaning in Atlanta with hotel-trained professionals. Get your instant quote today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & BASE ─────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Montserrat',sans-serif;color:#1a1a1a;background:#fff;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+input,select,textarea{font-family:inherit}
+
+/* ─── CSS VARIABLES ────────────────────────────────────────── */
+:root{
+  --gold:#B8942E;
+  --gold-light:#D4AE4E;
+  --dark:#1A1A1A;
+  --mid:#2A2A2A;
+  --cream:#F5F1E8;
+  --gray:#6B6B6B;
+  --lgray:#F2EFE8;
+  --border:#E0DCD0;
+  --white:#FFFFFF;
+  --font-serif:'Playfair Display',Georgia,serif;
+  --font-sans:'Montserrat',sans-serif;
+  --radius:4px;
+  --shadow:0 4px 24px rgba(0,0,0,0.08);
+  --transition:0.3s ease;
+}
+
+/* ─── UTILITIES ─────────────────────────────────────────────── */
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.serif{font-family:var(--font-serif)}
+.gold{color:var(--gold)}
+.section-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:12px}
+.section-divider{width:44px;height:2px;background:var(--gold);margin:12px 0 24px}
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* ─── BUTTONS ───────────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border-radius:var(--radius);transition:all var(--transition);white-space:nowrap}
+.btn-primary{background:var(--gold);color:#fff;border:1.5px solid var(--gold)}
+.btn-primary:hover{background:var(--gold-light);border-color:var(--gold-light);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.5)}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,0.08)}
+.btn-outline-dark{background:transparent;color:var(--dark);border:1.5px solid var(--dark)}
+.btn-outline-dark:hover{background:var(--dark);color:#fff}
+.btn-gold-outline{background:transparent;color:var(--gold);border:1.5px solid var(--gold)}
+.btn-gold-outline:hover{background:var(--gold);color:#fff}
+
+/* ─── NAV ───────────────────────────────────────────────────── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 0;transition:all var(--transition)}
+#nav.scrolled{background:#fff;box-shadow:0 2px 20px rgba(0,0,0,0.08);padding:14px 0}
+#nav.scrolled .nav-logo-name{color:var(--dark)}
+#nav.scrolled .nav-logo-sub{color:var(--gold)}
+#nav.scrolled .nav-link{color:var(--gray)}
+#nav.scrolled .nav-link:hover{color:var(--dark)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;flex-direction:column;line-height:1}
+.nav-logo-name{font-family:var(--font-serif);font-size:18px;font-weight:400;letter-spacing:2px;color:#fff;transition:color var(--transition)}
+.nav-logo-sub{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:2px;transition:color var(--transition)}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-link{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.8);font-weight:500;transition:color var(--transition)}
+.nav-link:hover{color:#fff}
+.nav-cta{padding:10px 22px;font-size:10px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:#fff;transition:all var(--transition)}
+#nav.scrolled .hamburger span{background:var(--dark)}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--dark);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.mobile-menu.open{display:flex}
+.mobile-menu .nav-link{font-size:16px;color:#fff;letter-spacing:3px}
+.mobile-close{position:absolute;top:24px;right:24px;color:#fff;font-size:24px;cursor:pointer;background:none;border:none}
+
+/* ─── HERO ──────────────────────────────────────────────────── */
+#hero{min-height:100vh;background:var(--dark);display:flex;align-items:center;padding-top:80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(105deg,#0e0e0e 0%,#1a1a1a 40%,#242424 100%)}
+.hero-accent{position:absolute;right:0;top:0;bottom:0;width:42%;background:var(--mid);clip-path:polygon(8% 0,100% 0,100% 100%,0 100%)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(184,148,46,0.4);color:var(--gold);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:7px 16px;border-radius:2px;margin-bottom:28px}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%}
+.hero-title{font-family:var(--font-serif);font-size:clamp(36px,4.5vw,58px);font-weight:400;color:#fff;line-height:1.2;margin-bottom:24px}
+.hero-title em{color:var(--gold);font-style:normal}
+.hero-body{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.8;max-width:440px;margin-bottom:36px;font-weight:300}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px}
+.hero-metrics{display:flex;gap:0;border-top:1px solid rgba(255,255,255,0.08);padding-top:28px}
+.metric{padding:0 32px 0 0;margin-right:32px;border-right:1px solid rgba(255,255,255,0.1)}
+.metric:last-child{border-right:none;margin-right:0;padding-right:0}
+.metric-num{font-family:var(--font-serif);font-size:28px;color:var(--gold);font-weight:400;display:block}
+.metric-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-top:2px}
+.hero-image{position:relative;height:560px}
+.hero-photo{width:100%;height:100%;object-fit:cover;border-radius:2px}
+.hero-photo-placeholder{width:100%;height:100%;background:linear-gradient(135deg,#2a2a2a,#333);border-radius:2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;border:1px solid rgba(184,148,46,0.2)}
+.hero-photo-placeholder span{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.hero-photo-placeholder svg{opacity:0.2}
+.hero-badge{position:absolute;bottom:32px;left:-20px;background:var(--gold);color:#fff;padding:12px 18px;border-radius:2px;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;box-shadow:0 8px 24px rgba(184,148,46,0.3)}
+
+/* ─── TRUST BAR ─────────────────────────────────────────────── */
+#trust{padding:0;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);background:#fff}
+.trust-inner{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.trust-item{display:flex;align-items:center;gap:10px}
+.trust-icon{width:36px;height:36px;background:var(--lgray);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trust-icon svg{width:16px;height:16px;stroke:var(--gold)}
+.trust-text{font-size:11px;font-weight:600;letter-spacing:0.5px;color:var(--dark)}
+.trust-sep{width:1px;height:32px;background:var(--border)}
+
+/* ─── SECTIONS COMMON ───────────────────────────────────────── */
+section{padding:100px 0}
+.section-dark{background:var(--dark)}
+.section-cream{background:var(--lgray)}
+
+/* ─── SERVICES ──────────────────────────────────────────────── */
+#services .section-header{margin-bottom:56px}
+#services h2{font-family:var(--font-serif);font-size:clamp(30px,3vw,42px);font-weight:400;color:var(--dark);margin-bottom:16px}
+#services .subtitle{font-size:14px;color:var(--gray);max-width:520px;line-height:1.8}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:all var(--transition);display:flex;flex-direction:column}
+.service-card:hover{box-shadow:var(--shadow);transform:translateY(-4px)}
+.service-card.featured{border:2px solid var(--gold);position:relative}
+.service-badge{background:var(--gold);color:#fff;font-size:9px;letter-spacing:2px;text-transform:uppercase;text-align:center;padding:7px;font-weight:600}
+.service-icon-wrap{padding:32px 28px 20px;display:flex;flex-direction:column;gap:4px}
+.service-icon{width:48px;height:48px;background:var(--lgray);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.service-icon svg{width:22px;height:22px;stroke:var(--gold)}
+.service-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;border:1px solid var(--gold);display:inline-block;padding:4px 10px;border-radius:2px;margin-bottom:10px}
+.service-card h3{font-family:var(--font-serif);font-size:20px;font-weight:400;color:var(--dark);margin-bottom:10px}
+.service-card p{font-size:13px;color:var(--gray);line-height:1.8;margin-bottom:16px}
+.service-features{padding:0 28px;flex:1}
+.service-features li{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--dark);padding:6px 0;border-bottom:1px solid var(--lgray)}
+.service-features li::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.service-footer{padding:20px 28px 28px}
+
+/* ─── WHY PORTSIDE ──────────────────────────────────────────── */
+#why{background:var(--lgray)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.why-content h2{font-family:var(--font-serif);font-size:clamp(28px,3vw,40px);font-weight:400;color:var(--dark);margin-bottom:20px}
+.why-body{font-size:14px;color:var(--gray);line-height:1.9;margin-bottom:12px}
+.why-body strong{color:var(--dark);font-weight:500;font-style:italic}
+.why-features{margin-top:28px;display:flex;flex-direction:column;gap:12px}
+.why-feature{display:flex;align-items:flex-start;gap:14px}
+.why-check{width:22px;height:22px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.why-check svg{width:10px;height:10px;stroke:#fff}
+.why-feature-text strong{display:block;font-size:13px;font-weight:600;color:var(--dark);margin-bottom:2px}
+.why-feature-text span{font-size:12px;color:var(--gray)}
+.why-media{position:relative}
+.why-video-box{width:100%;aspect-ratio:4/3;background:var(--dark);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;overflow:hidden;position:relative}
+.why-video-box::after{content:'';position:absolute;inset:0;border:1px solid rgba(184,148,46,0.3)}
+.play-btn{width:64px;height:64px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform var(--transition)}
+.play-btn:hover{transform:scale(1.08)}
+.play-btn svg{width:22px;height:22px;fill:#fff;margin-left:3px}
+.why-video-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4)}
+.why-stat-bar{position:absolute;bottom:-20px;left:20px;right:20px;background:#fff;border-radius:4px;padding:16px 20px;display:flex;justify-content:space-around;box-shadow:var(--shadow)}
+.wstat{text-align:center}
+.wstat-num{font-family:var(--font-serif);font-size:22px;color:var(--gold);display:block}
+.wstat-lbl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray)}
+
+/* ─── QUOTE CALCULATOR ──────────────────────────────────────── */
+#quote{background:#fff}
+.quote-wrap{border:2px solid var(--gold);border-radius:6px;overflow:hidden}
+.quote-grid{display:grid;grid-template-columns:1fr 1fr}
+.quote-left{padding:56px 48px;background:var(--dark)}
+.quote-left h2{font-family:var(--font-serif);font-size:clamp(26px,2.8vw,38px);font-weight:400;color:#fff;margin-bottom:16px}
+.quote-left p{font-size:14px;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:8px;font-weight:300}
+.quote-left .note{font-size:11px;color:rgba(255,255,255,0.3);margin-top:20px;font-style:italic}
+.quote-right{padding:48px;background:#fff}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:var(--gray);margin-bottom:8px}
+.form-group select,.form-group input{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px;color:var(--dark);background:#fff;appearance:none;-webkit-appearance:none;transition:border-color var(--transition)}
+.form-group select:focus,.form-group input:focus{outline:none;border-color:var(--gold)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.price-display{background:var(--lgray);border:1px solid var(--gold);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.price-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--gray);font-weight:600}
+.price-value{font-family:var(--font-serif);font-size:28px;color:var(--gold);font-weight:400}
+.price-note{font-size:10px;color:var(--gray);text-align:center;margin-top:8px}
+
+/* ─── BEFORE/AFTER ──────────────────────────────────────────── */
+#proof{background:var(--lgray)}
+#proof h2{font-family:var(--font-serif);font-size:clamp(28px,3vw,40px);font-weight:400;color:var(--dark);margin-bottom:8px}
+#proof .sub{font-size:14px;color:var(--gray);margin-bottom:48px}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.proof-card{background:#fff;border-radius:6px;overflow:hidden;border:1px solid var(--border)}
+.proof-images{display:grid;grid-template-columns:1fr 1fr;position:relative}
+.proof-img{aspect-ratio:1;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--gray);font-weight:500}
+.proof-img.before{background:#ddd;filter:saturate(0.2)}
+.proof-img.after{background:var(--lgray)}
+.proof-divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--gold);z-index:1}
+.proof-divider::after{content:'↔';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--gold);color:#fff;font-size:10px;padding:4px 6px;border-radius:50%}
+.proof-label{padding:14px 16px;font-size:12px;font-weight:600;color:var(--dark);border-top:1px solid var(--border)}
+.proof-location{font-size:11px;color:var(--gray);font-weight:400}
+
+/* ─── HOW IT WORKS ──────────────────────────────────────────── */
+#process{background:#fff}
+#process h2{font-family:var(--font-serif);font-size:clamp(28px,3vw,40px);font-weight:400;color:var(--dark);margin-bottom:48px}
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;position:relative}
+.process-grid::after{content:'';position:absolute;top:26px;left:calc(16.66% + 8px);right:calc(16.66% + 8px);height:1px;background:var(--border);z-index:0}
+.process-step{text-align:center;position:relative;z-index:1}
+.step-num{width:52px;height:52px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;background:#fff}
+.step-num span{font-family:var(--font-serif);font-size:20px;color:var(--gold)}
+.step-icon{width:40px;height:40px;margin:0 auto 16px;color:var(--gold)}
+.step-icon svg{width:40px;height:40px;stroke:var(--gold)}
+.process-step h3{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:10px}
+.process-step p{font-size:13px;color:var(--gray);line-height:1.8}
+
+/* ─── PERFECT FOR ───────────────────────────────────────────── */
+#for-who{background:var(--dark);padding:60px 0}
+#for-who h2{font-family:var(--font-serif);font-size:clamp(24px,2.5vw,34px);font-weight:400;color:#fff;margin-bottom:28px}
+.for-tags{display:flex;flex-wrap:wrap;gap:12px}
+.for-tag{border:1px solid rgba(184,148,46,0.4);color:rgba(255,255,255,0.75);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:10px 20px;border-radius:2px;font-weight:500;transition:all var(--transition)}
+.for-tag:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ─── BRAND STATEMENT ───────────────────────────────────────── */
+#brand{background:var(--mid);padding:100px 0;text-align:center}
+.brand-inner{max-width:760px;margin:0 auto}
+#brand h2{font-family:var(--font-serif);font-size:clamp(30px,3.5vw,48px);font-weight:400;color:#fff;line-height:1.25;margin-bottom:24px}
+.brand-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:40px 0;border:1px solid rgba(184,148,46,0.25);border-radius:4px;overflow:hidden}
+.brand-col{padding:28px 20px;text-align:center;border-right:1px solid rgba(184,148,46,0.2)}
+.brand-col:last-child{border-right:none}
+.brand-col-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:6px}
+.brand-col-text{font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7}
+.brand-quote{font-family:var(--font-serif);font-size:clamp(16px,2vw,22px);color:rgba(255,255,255,0.4);font-style:italic;margin-top:32px}
+.brand-quote strong{color:rgba(255,255,255,0.75);font-style:italic;font-weight:400}
+
+/* ─── REVIEWS ───────────────────────────────────────────────── */
+#reviews{background:#fff}
+#reviews h2{font-family:var(--font-serif);font-size:clamp(28px,3vw,40px);font-weight:400;color:var(--dark);margin-bottom:8px}
+#reviews .sub{font-size:14px;color:var(--gray);margin-bottom:48px}
+.reviews-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:32px}
+.review-card{background:var(--lgray);border-radius:6px;padding:28px;border:1px solid var(--border);transition:all var(--transition)}
+.review-card:hover{box-shadow:var(--shadow)}
+.stars{display:flex;gap:4px;margin-bottom:16px}
+.stars span{color:var(--gold);font-size:14px}
+.review-text{font-family:var(--font-serif);font-size:15px;font-style:italic;color:var(--dark);line-height:1.7;margin-bottom:20px}
+.review-author{display:flex;align-items:center;gap:12px;border-top:1px solid var(--border);padding-top:16px}
+.review-avatar{width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
+.review-name{font-size:13px;font-weight:600;color:var(--dark)}
+.review-role{font-size:11px;color:var(--gray)}
+.review-video-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.video-card{background:var(--dark);border-radius:6px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;cursor:pointer;transition:opacity var(--transition)}
+.video-card:hover{opacity:0.85}
+.video-card .play-btn{width:48px;height:48px}
+.video-card span{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4)}
+
+/* ─── CAREERS ───────────────────────────────────────────────── */
+#careers{background:var(--lgray)}
+.careers-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.careers-content h2{font-family:var(--font-serif);font-size:clamp(26px,3vw,38px);font-weight:400;color:var(--dark);margin-bottom:16px}
+.careers-content p{font-size:14px;color:var(--gray);line-height:1.8;margin-bottom:24px}
+.careers-perks{display:flex;flex-direction:column;gap:10px}
+.perk{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--dark)}
+.perk::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.careers-form{background:#fff;border-radius:6px;padding:36px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.careers-form h3{font-family:var(--font-serif);font-size:22px;font-weight:400;color:var(--dark);margin-bottom:24px}
+.careers-form .form-group input,.careers-form .form-group textarea{border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;width:100%;font-size:13px;color:var(--dark);transition:border-color var(--transition)}
+.careers-form .form-group input:focus,.careers-form .form-group textarea:focus{outline:none;border-color:var(--gold)}
+.careers-form textarea{height:80px;resize:none}
+
+/* ─── FINAL CTA ─────────────────────────────────────────────── */
+#cta{background:var(--dark);padding:100px 0;text-align:center;position:relative;overflow:hidden}
+#cta::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold)}
+#cta::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold)}
+.cta-inner{max-width:680px;margin:0 auto}
+#cta .cta-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(184,148,46,0.35);display:inline-block;padding:7px 18px;border-radius:2px;margin-bottom:28px}
+#cta h2{font-family:var(--font-serif);font-size:clamp(30px,3.8vw,52px);font-weight:400;color:#fff;line-height:1.2;margin-bottom:16px}
+#cta p{font-size:14px;color:rgba(255,255,255,0.5);font-weight:300;margin-bottom:36px;line-height:1.8}
+.cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+#cta .guarantee{font-size:11px;color:rgba(255,255,255,0.25);margin-top:24px;letter-spacing:0.5px}
+
+/* ─── FOOTER ────────────────────────────────────────────────── */
+#footer{background:#111;padding:60px 0 0}
+.footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1.2fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.footer-brand-name{font-family:var(--font-serif);font-size:20px;font-weight:400;letter-spacing:2px;color:#fff}
+.footer-brand-sub{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:3px;display:block}
+.footer-tagline{font-size:12px;color:rgba(255,255,255,0.35);line-height:1.8;margin:16px 0 24px;font-style:italic;font-weight:300}
+.footer-social{display:flex;gap:12px}
+.social-btn{width:34px;height:34px;border:1px solid rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all var(--transition)}
+.social-btn:hover{border-color:var(--gold);background:rgba(184,148,46,0.1)}
+.social-btn svg{width:14px;height:14px;stroke:#fff}
+.footer-col h4{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:20px}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.4);transition:color var(--transition);font-weight:300}
+.footer-links a:hover{color:#fff}
+.footer-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:12px;color:rgba(255,255,255,0.4);font-weight:300}
+.footer-contact-item svg{width:14px;height:14px;stroke:var(--gold);flex-shrink:0;margin-top:1px}
+.footer-bottom{padding:18px 0;display:flex;align-items:center;justify-content:space-between}
+.footer-copyright{font-size:11px;color:rgba(255,255,255,0.2)}
+.footer-bottom-links{display:flex;gap:20px}
+.footer-bottom-links a{font-size:11px;color:rgba(255,255,255,0.2);transition:color var(--transition)}
+.footer-bottom-links a:hover{color:rgba(255,255,255,0.5)}
+
+/* ─── SCROLL TO TOP ─────────────────────────────────────────── */
+#scrolltop{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:all var(--transition);z-index:500;box-shadow:0 4px 16px rgba(184,148,46,0.4)}
+#scrolltop.show{opacity:1;pointer-events:auto}
+#scrolltop svg{width:18px;height:18px;stroke:#fff}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-image{height:340px;order:-1}
+  .hero-badge{left:0;bottom:-16px}
+  .why-grid,.careers-grid{grid-template-columns:1fr;gap:48px}
+  .why-media{padding-bottom:60px}
+  .quote-grid{grid-template-columns:1fr}
+  .quote-left{padding:40px 36px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+}
+@media(max-width:768px){
+  section{padding:72px 0}
+  .services-grid,.reviews-grid,.proof-grid{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:1fr;gap:32px}
+  .process-grid::after{display:none}
+  .trust-inner{flex-wrap:wrap;gap:18px;justify-content:center}
+  .trust-sep{display:none}
+  .brand-cols{grid-template-columns:1fr}
+  .brand-col{border-right:none;border-bottom:1px solid rgba(184,148,46,0.2)}
+  .brand-col:last-child{border-bottom:none}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .hero-metrics{flex-wrap:wrap;gap:16px}
+  .metric{border-right:none;padding-right:0;margin-right:0}
+  .review-video-bar{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+  .hero-ctas{gap:10px}
+  .btn{padding:12px 20px;font-size:10px}
+  .cta-buttons{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ─── MOBILE MENU ─────────────────────────────────────────── -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#services" class="nav-link" onclick="closeMobile()">Services</a>
+  <a href="#why" class="nav-link" onclick="closeMobile()">About</a>
+  <a href="#reviews" class="nav-link" onclick="closeMobile()">Reviews</a>
+  <a href="#careers" class="nav-link" onclick="closeMobile()">Careers</a>
+  <a href="#cta" class="btn btn-primary" onclick="closeMobile()">Book Now</a>
+</div>
+
+<!-- ─── NAV ─────────────────────────────────────────────────── -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="nav-logo-name">PORTSIDE</span>
+        <span class="nav-logo-sub">Hospitality Cleaning</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#why" class="nav-link">About</a></li>
+        <li><a href="#reviews" class="nav-link">Reviews</a></li>
+        <li><a href="#careers" class="nav-link">Careers</a></li>
+      </ul>
+      <a href="#quote" class="btn btn-primary nav-cta">Book Now</a>
+      <div class="hamburger" id="hamburger" onclick="openMobile()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-accent"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content fade-in">
+        <div class="hero-tag">Atlanta, GA · Insured &amp; Bonded</div>
+        <h1 class="hero-title">
+          Experience the Standard of<br>
+          <em>Luxury Hospitality</em> —<br>
+          Inside Your Home.
+        </h1>
+        <p class="hero-body">At Portside Hospitality Cleaning, we bring the precision, presentation, and excellence of world-class hospitality into residential and commercial spaces across Atlanta and surrounding areas.</p>
+        <div class="hero-ctas">
+          <a href="#quote" class="btn btn-primary">Get Instant Quote →</a>
+          <a href="#why" class="btn btn-outline">Watch Our Work ▶</a>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric">
+            <span class="metric-num">500+</span>
+            <span class="metric-label">Properties Cleaned</span>
+          </div>
+          <div class="metric">
+            <span class="metric-num">5★</span>
+            <span class="metric-label">Average Rating</span>
+          </div>
+          <div class="metric">
+            <span class="metric-num">100%</span>
+            <span class="metric-label">Satisfaction Guarantee</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image fade-in">
+        <div class="hero-photo-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(184,148,46,0.8)" stroke-width="1">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>Hotel-Style Photography</span>
+          <span style="font-size:9px;color:rgba(255,255,255,0.15)">Luxury residential · Airbnb · Atlanta</span>
+        </div>
+        <div class="hero-badge">Same-Day Available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRUST BAR ────────────────────────────────────────────── -->
+<div id="trust">
+  <div class="container">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
+        </div>
+        <span class="trust-text">Insured &amp; Bonded</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 3.741-1.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/></svg>
+        </div>
+        <span class="trust-text">Hotel-Trained Team</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 0 1-1.161.886l-.143.048a1.107 1.107 0 0 0-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 0 1-1.652.928l-.679-.906a1.125 1.125 0 0 0-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 0 0-8.862 12.872M12.75 3.031a9 9 0 0 1 6.69 14.036m0 0-.177-.529A2.249 2.249 0 0 0 17.128 15H16.5l-.324-.324a1.453 1.453 0 0 0-2.328.377l-.036.073a1.586 1.586 0 0 1-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643"/></svg>
+        </div>
+        <span class="trust-text">Eco-Friendly</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+        </div>
+        <span class="trust-text">Same-Day Available</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"/></svg>
+        </div>
+        <span class="trust-text">5-Star Rated</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SERVICES ─────────────────────────────────────────────── -->
+<section id="services">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">What We Do</span>
+      <h2>Our Services</h2>
+      <div class="section-divider"></div>
+      <p class="subtitle">Precision-driven cleaning for every space — delivered with the consistency of a luxury hotel operation.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card fade-in">
+        <div class="service-icon-wrap">
+          <div class="service-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+          </div>
+          <span class="service-tag">Residential</span>
+          <h3>Home Cleaning</h3>
+          <p>Your home deserves more than a quick sweep. We bring hotel-grade attention to detail to every room, every surface, every visit.</p>
+        </div>
+        <ul class="service-features">
+          <li>Deep Cleaning</li>
+          <li>Standard Cleaning</li>
+          <li>Move-In / Move-Out</li>
+          <li>Post-Construction Cleaning</li>
+          <li>Eco-Friendly Options</li>
+          <li>Recurring Weekly &amp; Biweekly Plans</li>
+        </ul>
+        <div class="service-footer">
+          <a href="#quote" class="btn btn-gold-outline" style="width:100%;justify-content:center">Get a Quote →</a>
+        </div>
+      </div>
+
+      <div class="service-card featured fade-in">
+        <div class="service-badge">★ Most Requested</div>
+        <div class="service-icon-wrap">
+          <div class="service-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z"/></svg>
+          </div>
+          <span class="service-tag">Short-Term Rental</span>
+          <h3>Airbnb &amp; Vacation Rental</h3>
+          <p>Fast turnovers. Five-star presentation. Every single time. Keep your guests happy and your ratings high.</p>
+        </div>
+        <ul class="service-features">
+          <li>Linen Change &amp; Staging</li>
+          <li>Guest-Ready Presentation</li>
+          <li>Restocking Support</li>
+          <li>Same-Day Turnovers Available</li>
+          <li>Direct Communication with Hosts</li>
+          <li>Flexible Scheduling</li>
+        </ul>
+        <div class="service-footer">
+          <a href="#quote" class="btn btn-primary" style="width:100%;justify-content:center">Get a Quote →</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-icon-wrap">
+          <div class="service-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"/></svg>
+          </div>
+          <span class="service-tag">Commercial</span>
+          <h3>Office &amp; Business</h3>
+          <p>Your workspace reflects your brand. We help businesses maintain clean, healthy, professional environments that make a lasting impression.</p>
+        </div>
+        <ul class="service-features">
+          <li>Offices &amp; Co-Working Spaces</li>
+          <li>Medical Clinics &amp; Studios</li>
+          <li>Retail &amp; Small Businesses</li>
+          <li>Recurring Service Contracts</li>
+          <li>Flexible Hours</li>
+          <li>Professional Standards</li>
+        </ul>
+        <div class="service-footer">
+          <a href="#quote" class="btn btn-gold-outline" style="width:100%;justify-content:center">Get a Quote →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY PORTSIDE ──────────────────────────────────────────── -->
+<section id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-content fade-in">
+        <span class="section-label">Our Difference</span>
+        <h2>Hospitality Is In Our DNA</h2>
+        <div class="section-divider"></div>
+        <p class="why-body">Portside was built by professionals with years of experience in international hospitality, luxury hotels, and cruise lines.</p>
+        <p class="why-body"><strong>We didn't just decide to start a cleaning company.</strong> We transferred a decade of operational excellence, presentation standards, and guest-experience culture into residential and commercial cleaning.</p>
+        <p class="why-body">That means your property is not just cleaned — it is cared for like a luxury hospitality environment.</p>
+        <div class="why-features">
+          <div class="why-feature">
+            <div class="why-check"><svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+            <div class="why-feature-text"><strong>Attention to Detail</strong><span>Trained to notice what others overlook</span></div>
+          </div>
+          <div class="why-feature">
+            <div class="why-check"><svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+            <div class="why-feature-text"><strong>Hotel Presentation Standards</strong><span>Not just clean — visually perfect</span></div>
+          </div>
+          <div class="why-feature">
+            <div class="why-check"><svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+            <div class="why-feature-text"><strong>Guest Experience Mindset</strong><span>We think about how it feels, not just how it looks</span></div>
+          </div>
+          <div class="why-feature">
+            <div class="why-check"><svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+            <div class="why-feature-text"><strong>Operational Consistency</strong><span>Same quality, every single visit</span></div>
+          </div>
+          <div class="why-feature">
+            <div class="why-check"><svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+            <div class="why-feature-text"><strong>Discretion &amp; Professionalism</strong><span>Your home treated with care and respect</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="why-media fade-in">
+        <div class="why-video-box">
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="why-video-label">Before &amp; After — See the Difference</span>
+        </div>
+        <div class="why-stat-bar">
+          <div class="wstat"><span class="wstat-num">10+</span><span class="wstat-lbl">Years Hospitality</span></div>
+          <div class="wstat"><span class="wstat-num">3</span><span class="wstat-lbl">Countries</span></div>
+          <div class="wstat"><span class="wstat-num">Luxury</span><span class="wstat-lbl">Standards</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── QUOTE CALCULATOR ─────────────────────────────────────── -->
+<section id="quote">
+  <div class="container">
+    <div class="quote-wrap fade-in">
+      <div class="quote-grid">
+        <div class="quote-left">
+          <span class="section-label">Pricing</span>
+          <h2>Get Your Instant Estimate</h2>
+          <div class="section-divider"></div>
+          <p>No phone calls. No waiting. No surprises.</p>
+          <p>Tell us about your space and get a real price estimate in seconds — before you commit to anything.</p>
+          <p class="note">Final price confirmed at booking. No hidden fees. Satisfaction guaranteed or we come back — free.</p>
+        </div>
+        <div class="quote-right">
+          <div class="form-group">
+            <label>Service Type</label>
+            <select id="serviceType" onchange="calcPrice()">
+              <option value="standard">Standard Cleaning</option>
+              <option value="deep">Deep Cleaning</option>
+              <option value="airbnb">Airbnb / Vacation Rental</option>
+              <option value="movein">Move-In / Move-Out</option>
+              <option value="postconstruction">Post-Construction</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Bedrooms</label>
+              <select id="bedrooms" onchange="calcPrice()">
+                <option value="1">1 Bedroom</option>
+                <option value="2">2 Bedrooms</option>
+                <option value="3">3 Bedrooms</option>
+                <option value="4">4+ Bedrooms</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Bathrooms</label>
+              <select id="bathrooms" onchange="calcPrice()">
+                <option value="1">1 Bathroom</option>
+                <option value="2">2 Bathrooms</option>
+                <option value="3">3+ Bathrooms</option>
+              </select>
+            </div>
+          </div>
+          <div class="price-display">
+            <div>
+              <span class="price-label">Your Estimate</span>
+              <span id="priceValue" class="price-value">$129 – $159</span>
+            </div>
+            <svg width="32" height="32" fill="none" stroke="#B8942E" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z"/></svg>
+          </div>
+          <a href="mailto:hello@portsidecleaning.com" class="btn btn-primary" style="width:100%;justify-content:center">Book This Service →</a>
+          <p class="price-note">No commitment required · We'll confirm the final price before your appointment</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BEFORE / AFTER ────────────────────────────────────────── -->
+<section id="proof">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">Proof of Work</span>
+      <h2>Before &amp; After</h2>
+      <div class="section-divider"></div>
+      <p class="sub">See the Portside difference — in every detail. All photography is real work performed by our team.</p>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-card fade-in">
+        <div class="proof-images">
+          <div class="proof-img before">Before</div>
+          <div class="proof-img after">After</div>
+          <div class="proof-divider"></div>
+        </div>
+        <div class="proof-label">Kitchen Deep Clean <span class="proof-location">— Buckhead, Atlanta</span></div>
+      </div>
+      <div class="proof-card fade-in">
+        <div class="proof-images">
+          <div class="proof-img before">Before</div>
+          <div class="proof-img after">After</div>
+          <div class="proof-divider"></div>
+        </div>
+        <div class="proof-label">Airbnb Turnover <span class="proof-location">— Midtown, Atlanta</span></div>
+      </div>
+      <div class="proof-card fade-in">
+        <div class="proof-images">
+          <div class="proof-img before">Before</div>
+          <div class="proof-img after">After</div>
+          <div class="proof-divider"></div>
+        </div>
+        <div class="proof-label">Office Space <span class="proof-location">— Sandy Springs, GA</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ──────────────────────────────────────────── -->
+<section id="process">
+  <div class="container">
+    <div class="fade-in" style="text-align:center;margin-bottom:0">
+      <span class="section-label">Process</span>
+      <h2>Simple. Seamless. Premium.</h2>
+      <div class="section-divider" style="margin:12px auto 48px"></div>
+    </div>
+    <div class="process-grid">
+      <div class="process-step fade-in">
+        <div class="step-num"><span>1</span></div>
+        <div class="step-icon">
+          <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.638 4.5 4.757V19.5a2.25 2.25 0 0 0 2.25 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25V4.757c0-1.119-.806-2.057-1.907-2.185A48.507 48.507 0 0 0 12 2.25Z"/></svg>
+        </div>
+        <h3>Request Your Quote</h3>
+        <p>Tell us about your property and cleaning needs. Our online estimator gives you a real price range instantly — no commitment required.</p>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-num"><span>2</span></div>
+        <div class="step-icon">
+          <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
+        </div>
+        <h3>Schedule Your Service</h3>
+        <p>Choose a convenient day and time. We offer flexible slots including evenings and weekends. You'll receive a confirmation with all the details.</p>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-num"><span>3</span></div>
+        <div class="step-icon">
+          <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/></svg>
+        </div>
+        <h3>Relax &amp; Enjoy</h3>
+        <p>Our professionally trained team arrives on time, equipped, and ready. You simply enjoy the results — and the feeling of a luxury space.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PERFECT FOR ────────────────────────────────────────────── -->
+<section id="for-who">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label" style="color:rgba(184,148,46,0.7)">Who We Serve</span>
+      <h2>Perfect For</h2>
+    </div>
+    <div class="for-tags fade-in">
+      <span class="for-tag">Busy Families</span>
+      <span class="for-tag">Working Professionals</span>
+      <span class="for-tag">Airbnb Hosts</span>
+      <span class="for-tag">Real Estate Agents</span>
+      <span class="for-tag">Offices &amp; Businesses</span>
+      <span class="for-tag">Property Managers</span>
+      <span class="for-tag">Vacation Rentals</span>
+      <span class="for-tag">Luxury Homeowners</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BRAND STATEMENT ───────────────────────────────────────── -->
+<section id="brand">
+  <div class="container">
+    <div class="brand-inner fade-in">
+      <span class="section-label" style="text-align:center;display:block">Our Philosophy</span>
+      <h2>More Than Cleaning.<br>A Hospitality Experience.</h2>
+      <div class="section-divider" style="margin:16px auto 32px"></div>
+      <div class="brand-cols">
+        <div class="brand-col">
+          <span class="brand-col-title">Experience</span>
+          <p class="brand-col-text">We think about how it feels to walk into your space — the scent, the visual order, the comfort.</p>
+        </div>
+        <div class="brand-col">
+          <span class="brand-col-title">Presentation</span>
+          <p class="brand-col-text">Folded towels, aligned cushions, spotless surfaces. Every detail is intentional.</p>
+        </div>
+        <div class="brand-col">
+          <span class="brand-col-title">Consistency</span>
+          <p class="brand-col-text">The same standard, every visit. Because reliability is the foundation of trust.</p>
+        </div>
+      </div>
+      <p class="brand-quote"><strong>"Your property is not just cleaned. It is cared for."</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── REVIEWS ───────────────────────────────────────────────── -->
+<section id="reviews">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">Social Proof</span>
+      <h2>What Our Clients Say</h2>
+      <div class="section-divider"></div>
+      <p class="sub">Trusted by professionals, families, Airbnb hosts, and property owners who expect a higher standard of care.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card fade-in">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">"The level of detail feels like walking into a luxury hotel. My guests keep commenting on how immaculate everything looks. Portside completely changed my review scores."</p>
+        <div class="review-author">
+          <div class="review-avatar">SL</div>
+          <div><p class="review-name">Sarah L.</p><p class="review-role">Airbnb Host · Atlanta, GA</p></div>
+        </div>
+      </div>
+      <div class="review-card fade-in">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">"Professional, organized, and extremely reliable. They show up on time, communicate proactively, and the quality is always consistent. My go-to for all 12 of my units."</p>
+        <div class="review-author">
+          <div class="review-avatar">MR</div>
+          <div><p class="review-name">Marcus R.</p><p class="review-role">Property Manager · Metro Atlanta</p></div>
+        </div>
+      </div>
+      <div class="review-card fade-in">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">"Finally a cleaning company that truly understands presentation. It's not just clean — it looks and feels different. I notice the details every single time."</p>
+        <div class="review-author">
+          <div class="review-avatar">JW</div>
+          <div><p class="review-name">Jennifer W.</p><p class="review-role">Homeowner · Buckhead</p></div>
+        </div>
+      </div>
+      <div class="review-card fade-in">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">"We use Portside for our office twice a week. The team is discreet, efficient, and the standard has never dropped once in six months. Highly recommend to any business."</p>
+        <div class="review-author">
+          <div class="review-avatar">DK</div>
+          <div><p class="review-name">David K.</p><p class="review-role">Business Owner · Sandy Springs</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="review-video-bar fade-in">
+      <div class="video-card">
+        <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        <span>Sarah — Airbnb Host</span>
+      </div>
+      <div class="video-card">
+        <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        <span>Jennifer — Homeowner</span>
+      </div>
+      <div class="video-card">
+        <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        <span>Marcus — Property Manager</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CAREERS ───────────────────────────────────────────────── -->
+<section id="careers">
+  <div class="container">
+    <div class="careers-grid">
+      <div class="careers-content fade-in">
+        <span class="section-label">Join Our Team</span>
+        <h2>Work With Us</h2>
+        <div class="section-divider"></div>
+        <p>We're always looking for detail-oriented professionals who share our passion for hospitality excellence.</p>
+        <p>At Portside, you're not just a cleaner. You're part of a team that delivers luxury experiences — with the training, tools, and support to match.</p>
+        <div class="careers-perks">
+          <span class="perk">Competitive pay &amp; flexible schedules</span>
+          <span class="perk">Professional training provided</span>
+          <span class="perk">Supportive, team-oriented culture</span>
+          <span class="perk">Growth opportunities as we expand across Atlanta</span>
+        </div>
+      </div>
+      <div class="fade-in">
+        <div class="careers-form">
+          <h3>Apply Now</h3>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your full name">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" placeholder="(XXX) XXX-XXXX">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="your@email.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Years of Experience</label>
+            <select>
+              <option>Less than 1 year</option>
+              <option>1–2 years</option>
+              <option>3–5 years</option>
+              <option>5+ years</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message (optional)</label>
+            <textarea placeholder="Tell us a little about yourself..."></textarea>
+          </div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center">Send Application →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINAL CTA ─────────────────────────────────────────────── -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner fade-in">
+      <span class="cta-tag">Atlanta, GA &amp; Surrounding Areas</span>
+      <h2>Ready to Experience<br>Hotel-Level Cleaning?</h2>
+      <p>Let Portside Hospitality Cleaning transform your space with professionalism, care, and hospitality excellence. No contracts required. Satisfaction guaranteed.</p>
+      <div class="cta-buttons">
+        <a href="#quote" class="btn btn-primary">Get a Free Estimate →</a>
+        <a href="tel:+1XXXXXXXXXX" class="btn btn-outline">📞 Call Our Team</a>
+      </div>
+      <p class="guarantee">Satisfaction not met? We return — free of charge.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────── -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">PORTSIDE</div>
+        <span class="footer-brand-sub">Hospitality Cleaning</span>
+        <p class="footer-tagline">Bringing Hotel-Level Care to Your Home.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="TikTok">
+            <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <div class="footer-links">
+          <a href="#services">Residential Cleaning</a>
+          <a href="#services">Airbnb &amp; Vacation Rental</a>
+          <a href="#services">Office &amp; Commercial</a>
+          <a href="#services">Deep Cleaning</a>
+          <a href="#services">Move-In / Move-Out</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="#why">About Us</a>
+          <a href="#process">Our Process</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#careers">Careers</a>
+          <a href="#cta">Contact</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+          <span>Serving Atlanta &amp; Surrounding Areas</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+          <span>(XXX) XXX-XXXX</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+          <span>hello@portsidecleaning.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+          <span>Flexible Scheduling · 7 Days a Week</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2025 Portside Hospitality Cleaning · All rights reserved</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── SCROLL TO TOP ─────────────────────────────────────────── -->
+<button id="scrolltop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 15.75l7.5-7.5 7.5 7.5"/></svg>
+</button>
+
+<!-- ─── JAVASCRIPT ─────────────────────────────────────────────── -->
+<script>
+// ── NAV SCROLL ────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  const scrollTop = document.getElementById('scrolltop');
+  if(window.scrollY > 60){
+    nav.classList.add('scrolled');
+    scrollTop.classList.add('show');
+  } else {
+    nav.classList.remove('scrolled');
+    scrollTop.classList.remove('show');
+  }
+});
+
+// ── MOBILE MENU ───────────────────────────────────────────────
+function openMobile(){ document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeMobile(){ document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow=''; }
+document.getElementById('mobileClose').addEventListener('click', closeMobile);
+
+// ── FADE IN ON SCROLL ─────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ── PRICE CALCULATOR ──────────────────────────────────────────
+const prices = {
+  standard:       [[89,109],[109,139],[139,169],[169,209]],
+  deep:           [[129,159],[159,199],[199,249],[249,309]],
+  airbnb:         [[99,129],[129,159],[159,199],[199,249]],
+  movein:         [[149,189],[189,239],[239,299],[299,369]],
+  postconstruction:[[179,219],[219,279],[279,349],[349,429]]
+};
+const bathMult = [1, 1.12, 1.25];
+
+function calcPrice(){
+  const svc  = document.getElementById('serviceType').value;
+  const bed  = parseInt(document.getElementById('bedrooms').value) - 1;
+  const bath = parseInt(document.getElementById('bathrooms').value) - 1;
+  const [lo, hi] = prices[svc][bed];
+  const mult = bathMult[bath];
+  const finalLo = Math.round(lo * mult / 10) * 10;
+  const finalHi = Math.round(hi * mult / 10) * 10;
+  document.getElementById('priceValue').textContent = '$' + finalLo + ' – $' + finalHi;
+}
+
+// ── SMOOTH ANCHOR SCROLL ──────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target){ e.preventDefault(); const top = target.getBoundingClientRect().top + window.scrollY - 72; window.scrollTo({top, behavior:'smooth'}); }
+  });
+});
+</script>
+</body>
+</html>

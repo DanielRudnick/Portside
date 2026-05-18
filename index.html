@@ -186,7 +186,10 @@ section{padding:100px 0}
 #proof .sub{font-size:14px;color:var(--gray);margin-bottom:48px}
 .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .proof-card{background:#fff;border-radius:6px;overflow:hidden;border:1px solid var(--border)}
-.proof-card img{width:100%;height:280px;object-fit:cover;display:block}
+.proof-images{display:grid;grid-template-columns:1fr 1fr;position:relative}
+.proof-images img{width:100%;height:240px;object-fit:cover;display:block}
+.proof-divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--gold);z-index:1}
+.proof-divider::after{content:'↔';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--gold);color:#fff;font-size:10px;padding:4px 6px;border-radius:50%}
 .proof-label{padding:14px 16px;font-size:12px;font-weight:600;color:var(--dark);border-top:1px solid var(--border)}
 .proof-location{font-size:11px;color:var(--gray);font-weight:400}
 
@@ -643,15 +646,27 @@ section{padding:100px 0}
     </div>
     <div class="proof-grid">
       <div class="proof-card fade-in">
-        <img src="images/work-kitchen.png" alt="Kitchen Clean - Buckhead, Atlanta">
-        <div class="proof-label">Kitchen Clean <span class="proof-location">— Buckhead, Atlanta</span></div>
+        <div class="proof-images">
+          <img src="images/before-1.png" alt="Before" style="filter:saturate(0.15)">
+          <img src="images/after-1.png" alt="After">
+          <div class="proof-divider"></div>
+        </div>
+        <div class="proof-label">Kitchen Deep Clean <span class="proof-location">— Buckhead, Atlanta</span></div>
       </div>
       <div class="proof-card fade-in">
-        <img src="images/work-airbnb.png" alt="Airbnb Turnover - Midtown, Atlanta">
+        <div class="proof-images">
+          <img src="images/before-2.png" alt="Before" style="filter:saturate(0.15)">
+          <img src="images/after-2.png" alt="After">
+          <div class="proof-divider"></div>
+        </div>
         <div class="proof-label">Airbnb Turnover <span class="proof-location">— Midtown, Atlanta</span></div>
       </div>
       <div class="proof-card fade-in">
-        <img src="images/work-office.png" alt="Office Clean - Sandy Springs, GA">
+        <div class="proof-images">
+          <img src="images/before-3.png" alt="Before" style="filter:saturate(0.15)">
+          <img src="images/after-3.png" alt="After">
+          <div class="proof-divider"></div>
+        </div>
         <div class="proof-label">Office Space <span class="proof-location">— Sandy Springs, GA</span></div>
       </div>
     </div>

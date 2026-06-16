@@ -1102,10 +1102,19 @@ function closeModal(){
   document.body.style.overflow='';
 }
 function submitBooking(){
-  const name  = document.getElementById('f-name').value.trim();
-  const phone = document.getElementById('f-phone').value.trim();
-  const email = document.getElementById('f-email').value.trim();
+  const name    = document.getElementById('f-name').value.trim();
+  const phone   = document.getElementById('f-phone').value.trim();
+  const email   = document.getElementById('f-email').value.trim();
+  const address = document.getElementById('f-address').value.trim();
+  const info    = document.getElementById('f-info').value.trim();
   if(!name || !phone || !email){ alert('Please fill in your name, phone, and email.'); return; }
+
+  fetch('https://new-backend.botconversa.com.br/api/v1/webhooks-automation/catch/100434/2zKCNWt5Eklt/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, phone, email, address, additional_info: info })
+  }).catch(() => {});
+
   document.getElementById('modalForm').style.display='none';
   document.getElementById('modalSuccess').style.display='block';
 }

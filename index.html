@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portside Clean | Professional Cleaning in Atlanta, GA</title>
-<meta name="description" content="Portside Clean offers reliable residential, Airbnb, and commercial cleaning across Atlanta. Any space, any schedule — satisfaction guaranteed. Get your instant quote today.">
+<title>Portside Hospitality Cleaning | Hotel-Level Cleaning in Atlanta, GA</title>
+<meta name="description" content="Experience luxury hospitality in your home. Portside offers residential, Airbnb & commercial cleaning in Atlanta with hotel-trained professionals. Get your instant quote today.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -187,7 +187,9 @@ section{padding:100px 0}
 .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .proof-card{background:#fff;border-radius:6px;overflow:hidden;border:1px solid var(--border)}
 .proof-images{display:grid;grid-template-columns:1fr 1fr;position:relative}
-.proof-images img{width:100%;height:240px;object-fit:cover;display:block}
+.proof-img{aspect-ratio:1;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--gray);font-weight:500}
+.proof-img.before{background:#ddd;filter:saturate(0.2)}
+.proof-img.after{background:var(--lgray)}
 .proof-divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--gold);z-index:1}
 .proof-divider::after{content:'↔';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--gold);color:#fff;font-size:10px;padding:4px 6px;border-radius:50%}
 .proof-label{padding:14px 16px;font-size:12px;font-weight:600;color:var(--dark);border-top:1px solid var(--border)}
@@ -297,6 +299,30 @@ section{padding:100px 0}
 #scrolltop.show{opacity:1;pointer-events:auto}
 #scrolltop svg{width:18px;height:18px;stroke:#fff}
 
+/* ─── BOOKING MODAL ──────────────────────────────────────────── */
+#bookingModal{display:none;position:fixed;inset:0;z-index:2000;align-items:center;justify-content:center;padding:20px}
+#bookingModal.open{display:flex}
+.modal-backdrop{position:absolute;inset:0;background:rgba(1,36,69,0.7);backdrop-filter:blur(4px)}
+.modal-box{position:relative;background:#fff;border-radius:10px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;box-shadow:0 24px 60px rgba(1,36,69,0.25)}
+.modal-header{background:var(--dark);padding:28px 32px 24px;border-radius:10px 10px 0 0}
+.modal-header h3{font-family:var(--font-serif);font-size:22px;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.modal-header p{font-size:13px;color:rgba(255,255,255,0.55);font-weight:300}
+.modal-close{position:absolute;top:18px;right:20px;background:none;border:none;color:rgba(255,255,255,0.6);font-size:22px;cursor:pointer;line-height:1;padding:4px 8px;transition:color var(--transition)}
+.modal-close:hover{color:#fff}
+.modal-body{padding:28px 32px 32px}
+.modal-body .form-group{margin-bottom:18px}
+.modal-body .form-group label{display:block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:var(--gray);margin-bottom:7px}
+.modal-body .form-group input,
+.modal-body .form-group textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--radius);font-size:13px;color:var(--dark);font-family:var(--font-sans);background:#fff;transition:border-color var(--transition)}
+.modal-body .form-group input:focus,
+.modal-body .form-group textarea:focus{outline:none;border-color:var(--gold)}
+.modal-body textarea{height:90px;resize:none}
+.modal-success{display:none;text-align:center;padding:48px 32px}
+.modal-success-icon{width:64px;height:64px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.modal-success-icon svg{width:28px;height:28px;stroke:#fff}
+.modal-success h3{font-family:var(--font-serif);font-size:22px;font-weight:600;color:var(--dark);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.modal-success p{font-size:14px;color:var(--gray);line-height:1.7}
+
 /* ─── RESPONSIVE ─────────────────────────────────────────────── */
 @media(max-width:1024px){
   .hero-grid{grid-template-columns:1fr;gap:48px}
@@ -340,7 +366,53 @@ section{padding:100px 0}
   <a href="#why" class="nav-link" onclick="closeMobile()">About</a>
   <a href="#reviews" class="nav-link" onclick="closeMobile()">Reviews</a>
   <a href="#careers" class="nav-link" onclick="closeMobile()">Careers</a>
-  <a href="#cta" class="btn btn-primary" onclick="closeMobile()">Book Now</a>
+  <a href="#" class="btn btn-primary" onclick="closeMobile();openModal();return false;">Book Now</a>
+</div>
+
+<!-- ─── BOOKING MODAL ────────────────────────────────────────── -->
+<div id="bookingModal">
+  <div class="modal-backdrop" onclick="closeModal()"></div>
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Schedule a Cleaning</h3>
+      <p>Fill in your details and we'll get back to you shortly.</p>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalForm">
+      <div class="form-group">
+        <label>Full Name *</label>
+        <input type="text" id="f-name" placeholder="Your full name" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone *</label>
+          <input type="tel" id="f-phone" placeholder="(XXX) XXX-XXXX" required>
+        </div>
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" id="f-email" placeholder="your@email.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" id="f-address" placeholder="Street, City, State">
+      </div>
+      <div class="form-group">
+        <label>Additional Info</label>
+        <textarea id="f-info" placeholder="Type of cleaning, number of rooms, special requests..."></textarea>
+      </div>
+      <button class="btn btn-primary" onclick="submitBooking()" style="width:100%;justify-content:center;font-size:12px">Send Request →</button>
+      <p style="font-size:11px;color:var(--gray);text-align:center;margin-top:12px">No commitment required · We'll confirm details before scheduling</p>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <div class="modal-success-icon">
+        <svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+      </div>
+      <h3>Request Sent!</h3>
+      <p>Thank you! Our team will review your request and reach out within <strong>24 hours</strong> to confirm your appointment.</p>
+      <button class="btn btn-primary" onclick="closeModal()" style="margin-top:24px">Close</button>
+    </div>
+  </div>
 </div>
 
 <!-- ─── NAV ─────────────────────────────────────────────────── -->
@@ -349,7 +421,7 @@ section{padding:100px 0}
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">
         <span class="nav-logo-name">PORTSIDE</span>
-        <span class="nav-logo-sub">Professional Cleaning</span>
+        <span class="nav-logo-sub">Hospitality Cleaning</span>
       </a>
       <ul class="nav-links">
         <li><a href="#services" class="nav-link">Services</a></li>
@@ -357,7 +429,7 @@ section{padding:100px 0}
         <li><a href="#reviews" class="nav-link">Reviews</a></li>
         <li><a href="#careers" class="nav-link">Careers</a></li>
       </ul>
-      <a href="#quote" class="btn btn-primary nav-cta">Book Now</a>
+      <a href="#" class="btn btn-primary nav-cta" onclick="openModal();return false;">Book Now</a>
       <div class="hamburger" id="hamburger" onclick="openMobile()">
         <span></span><span></span><span></span>
       </div>
@@ -374,14 +446,14 @@ section{padding:100px 0}
       <div class="hero-content fade-in">
         <div class="hero-tag">Atlanta, GA · Insured &amp; Bonded</div>
         <h1 class="hero-title">
-          Your Space,<br>
-          <em>Cleaned Right</em> —<br>
-          Every Single Time.
+          Experience the Standard of<br>
+          <em>Luxury Hospitality</em> —<br>
+          Inside Your Home.
         </h1>
-        <p class="hero-body">Portside cleans homes, Airbnbs, and businesses across Atlanta. Reliable, thorough, and on time — for any space, any schedule, any budget.</p>
+        <p class="hero-body">At Portside Hospitality Cleaning, we bring the precision, presentation, and excellence of world-class hospitality into residential and commercial spaces across Atlanta and surrounding areas.</p>
         <div class="hero-ctas">
-          <a href="#quote" class="btn btn-primary">Get Instant Quote →</a>
-          <a href="#services" class="btn btn-outline">See Our Services</a>
+          <a href="#" class="btn btn-primary" onclick="openModal();return false;">Get Instant Quote →</a>
+          <a href="#why" class="btn btn-outline">Watch Our Work ▶</a>
         </div>
         <div class="hero-metrics">
           <div class="metric">
@@ -399,7 +471,13 @@ section{padding:100px 0}
         </div>
       </div>
       <div class="hero-image fade-in">
-        <img src="images/hero-kitchen.jpg.png" alt="Clean home by Portside Clean - Atlanta" class="hero-photo">
+        <div class="hero-photo-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(50,179,194,0.8)" stroke-width="1">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>Hotel-Style Photography</span>
+          <span style="font-size:9px;color:rgba(255,255,255,0.15)">Luxury residential · Airbnb · Atlanta</span>
+        </div>
         <div class="hero-badge">Same-Day Available</div>
       </div>
     </div>
@@ -455,7 +533,7 @@ section{padding:100px 0}
       <span class="section-label">What We Do</span>
       <h2>Our Services</h2>
       <div class="section-divider"></div>
-      <p class="subtitle">Homes, Airbnbs, offices — we clean every type of space with the same attention to detail and reliability you can count on.</p>
+      <p class="subtitle">Precision-driven cleaning for every space — delivered with the consistency of a luxury hotel operation.</p>
     </div>
     <div class="services-grid">
 
@@ -477,7 +555,7 @@ section{padding:100px 0}
           <li>Recurring Weekly &amp; Biweekly Plans</li>
         </ul>
         <div class="service-footer">
-          <a href="#quote" class="btn btn-gold-outline" style="width:100%;justify-content:center">Get a Quote →</a>
+          <a href="#" class="btn btn-gold-outline" style="width:100%;justify-content:center" onclick="openModal();return false;">Get a Quote →</a>
         </div>
       </div>
 
@@ -500,7 +578,7 @@ section{padding:100px 0}
           <li>Flexible Scheduling</li>
         </ul>
         <div class="service-footer">
-          <a href="#quote" class="btn btn-primary" style="width:100%;justify-content:center">Get a Quote →</a>
+          <a href="#" class="btn btn-primary" style="width:100%;justify-content:center" onclick="openModal();return false;">Get a Quote →</a>
         </div>
       </div>
 
@@ -522,7 +600,7 @@ section{padding:100px 0}
           <li>Professional Standards</li>
         </ul>
         <div class="service-footer">
-          <a href="#quote" class="btn btn-gold-outline" style="width:100%;justify-content:center">Get a Quote →</a>
+          <a href="#" class="btn btn-gold-outline" style="width:100%;justify-content:center" onclick="openModal();return false;">Get a Quote →</a>
         </div>
       </div>
 
@@ -536,41 +614,45 @@ section{padding:100px 0}
     <div class="why-grid">
       <div class="why-content fade-in">
         <span class="section-label">Our Difference</span>
-        <h2>We Show Up. We Clean Right. You Relax.</h2>
+        <h2>Hospitality Is In Our DNA</h2>
         <div class="section-divider"></div>
-        <p class="why-body">Portside was built by people who care about doing the job properly — not just quickly. We treat every space as if it were our own.</p>
-        <p class="why-body"><strong>Whether it's your home, your rental, or your office</strong> — you get the same reliable, thorough clean every single time. No surprises. No shortcuts.</p>
-        <p class="why-body">That's the Portside promise: a clean you can actually feel.</p>
+        <p class="why-body">Portside was built by professionals with years of experience in international hospitality, luxury hotels, and cruise lines.</p>
+        <p class="why-body"><strong>We didn't just decide to start a cleaning company.</strong> We transferred a decade of operational excellence, presentation standards, and guest-experience culture into residential and commercial cleaning.</p>
+        <p class="why-body">That means your property is not just cleaned — it is cared for like a luxury hospitality environment.</p>
         <div class="why-features">
           <div class="why-feature">
             <div class="why-check"><svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
-            <div class="why-feature-text"><strong>Attention to Detail</strong><span>We notice what others miss</span></div>
+            <div class="why-feature-text"><strong>Attention to Detail</strong><span>Trained to notice what others overlook</span></div>
           </div>
           <div class="why-feature">
             <div class="why-check"><svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
-            <div class="why-feature-text"><strong>Always On Time</strong><span>We respect your schedule — no waiting around</span></div>
+            <div class="why-feature-text"><strong>Hotel Presentation Standards</strong><span>Not just clean — visually perfect</span></div>
           </div>
           <div class="why-feature">
             <div class="why-check"><svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
-            <div class="why-feature-text"><strong>Consistent Results</strong><span>Same quality, every single visit</span></div>
+            <div class="why-feature-text"><strong>Guest Experience Mindset</strong><span>We think about how it feels, not just how it looks</span></div>
           </div>
           <div class="why-feature">
             <div class="why-check"><svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
-            <div class="why-feature-text"><strong>Trusted &amp; Insured</strong><span>Background-checked team, fully insured</span></div>
+            <div class="why-feature-text"><strong>Operational Consistency</strong><span>Same quality, every single visit</span></div>
           </div>
           <div class="why-feature">
             <div class="why-check"><svg fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
-            <div class="why-feature-text"><strong>Any Space, Any Size</strong><span>Studios, houses, offices, rentals — we do it all</span></div>
+            <div class="why-feature-text"><strong>Discretion &amp; Professionalism</strong><span>Your home treated with care and respect</span></div>
           </div>
         </div>
       </div>
       <div class="why-media fade-in">
-        <!-- REPLACE: add a team or clean space photo here -->
-        <img src="images/about-photo.png" alt="Portside Clean Team" style="width:100%;height:100%;object-fit:cover;border-radius:4px;display:block">
+        <div class="why-video-box">
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="why-video-label">Before &amp; After — See the Difference</span>
+        </div>
         <div class="why-stat-bar">
-          <div class="wstat"><span class="wstat-num">500+</span><span class="wstat-lbl">Spaces Cleaned</span></div>
-          <div class="wstat"><span class="wstat-num">5★</span><span class="wstat-lbl">Avg. Rating</span></div>
-          <div class="wstat"><span class="wstat-num">100%</span><span class="wstat-lbl">Satisfaction</span></div>
+          <div class="wstat"><span class="wstat-num">10+</span><span class="wstat-lbl">Years Hospitality</span></div>
+          <div class="wstat"><span class="wstat-num">3</span><span class="wstat-lbl">Countries</span></div>
+          <div class="wstat"><span class="wstat-num">Luxury</span><span class="wstat-lbl">Standards</span></div>
         </div>
       </div>
     </div>
@@ -627,7 +709,7 @@ section{padding:100px 0}
             </div>
             <svg width="32" height="32" fill="none" stroke="#B8942E" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z"/></svg>
           </div>
-          <a href="mailto:hello@portsidecleaning.com" class="btn btn-primary" style="width:100%;justify-content:center">Book This Service →</a>
+          <a href="#" class="btn btn-primary" style="width:100%;justify-content:center" onclick="openModal();return false;">Book This Service →</a>
           <p class="price-note">No commitment required · We'll confirm the final price before your appointment</p>
         </div>
       </div>
@@ -642,29 +724,29 @@ section{padding:100px 0}
       <span class="section-label">Proof of Work</span>
       <h2>Before &amp; After</h2>
       <div class="section-divider"></div>
-      <p class="sub">Real work, real results. Every photo is from our team — no stock images.</p>
+      <p class="sub">See the Portside difference — in every detail. All photography is real work performed by our team.</p>
     </div>
     <div class="proof-grid">
       <div class="proof-card fade-in">
         <div class="proof-images">
-          <img src="images/before-1.png" alt="Before" style="filter:saturate(0.15)">
-          <img src="images/after-1.png" alt="After">
+          <div class="proof-img before">Before</div>
+          <div class="proof-img after">After</div>
           <div class="proof-divider"></div>
         </div>
         <div class="proof-label">Kitchen Deep Clean <span class="proof-location">— Buckhead, Atlanta</span></div>
       </div>
       <div class="proof-card fade-in">
         <div class="proof-images">
-          <img src="images/before-2.png" alt="Before" style="filter:saturate(0.15)">
-          <img src="images/after-2.png" alt="After">
+          <div class="proof-img before">Before</div>
+          <div class="proof-img after">After</div>
           <div class="proof-divider"></div>
         </div>
         <div class="proof-label">Airbnb Turnover <span class="proof-location">— Midtown, Atlanta</span></div>
       </div>
       <div class="proof-card fade-in">
         <div class="proof-images">
-          <img src="images/before-3.png" alt="Before" style="filter:saturate(0.15)">
-          <img src="images/after-3.png" alt="After">
+          <div class="proof-img before">Before</div>
+          <div class="proof-img after">After</div>
           <div class="proof-divider"></div>
         </div>
         <div class="proof-label">Office Space <span class="proof-location">— Sandy Springs, GA</span></div>
@@ -678,7 +760,7 @@ section{padding:100px 0}
   <div class="container">
     <div class="fade-in" style="text-align:center;margin-bottom:0">
       <span class="section-label">Process</span>
-      <h2>Simple. Fast. Done Right.</h2>
+      <h2>Simple. Seamless. Premium.</h2>
       <div class="section-divider" style="margin:12px auto 48px"></div>
     </div>
     <div class="process-grid">
@@ -704,7 +786,7 @@ section{padding:100px 0}
           <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/></svg>
         </div>
         <h3>Relax &amp; Enjoy</h3>
-        <p>Our trained team arrives on time, fully equipped. You sit back and enjoy a genuinely clean space — no stress, no hassle.</p>
+        <p>Our professionally trained team arrives on time, equipped, and ready. You simply enjoy the results — and the feeling of a luxury space.</p>
       </div>
     </div>
   </div>
@@ -725,11 +807,7 @@ section{padding:100px 0}
       <span class="for-tag">Offices &amp; Businesses</span>
       <span class="for-tag">Property Managers</span>
       <span class="for-tag">Vacation Rentals</span>
-      <span class="for-tag">New Homeowners</span>
-      <span class="for-tag">Students &amp; Renters</span>
-      <span class="for-tag">Event Hosts</span>
-      <span class="for-tag">Senior Living</span>
-      <span class="for-tag">Move-In / Move-Out</span>
+      <span class="for-tag">Luxury Homeowners</span>
     </div>
   </div>
 </section>
@@ -739,23 +817,23 @@ section{padding:100px 0}
   <div class="container">
     <div class="brand-inner fade-in">
       <span class="section-label" style="text-align:center;display:block">Our Philosophy</span>
-      <h2>More Than Cleaning.<br>Peace of Mind.</h2>
+      <h2>More Than Cleaning.<br>A Hospitality Experience.</h2>
       <div class="section-divider" style="margin:16px auto 32px"></div>
       <div class="brand-cols">
         <div class="brand-col">
-          <span class="brand-col-title">Reliability</span>
-          <p class="brand-col-text">We show up when we say we will — every time. No last-minute cancellations, no excuses.</p>
+          <span class="brand-col-title">Experience</span>
+          <p class="brand-col-text">We think about how it feels to walk into your space — the scent, the visual order, the comfort.</p>
         </div>
         <div class="brand-col">
-          <span class="brand-col-title">Thoroughness</span>
-          <p class="brand-col-text">Every corner, every surface. We don't rush through your home — we actually clean it.</p>
+          <span class="brand-col-title">Presentation</span>
+          <p class="brand-col-text">Folded towels, aligned cushions, spotless surfaces. Every detail is intentional.</p>
         </div>
         <div class="brand-col">
-          <span class="brand-col-title">Trust</span>
-          <p class="brand-col-text">Background-checked, insured, and respectful of your space. We treat your home like our own.</p>
+          <span class="brand-col-title">Consistency</span>
+          <p class="brand-col-text">The same standard, every visit. Because reliability is the foundation of trust.</p>
         </div>
       </div>
-      <p class="brand-quote"><strong>"A clean home shouldn't be a luxury. It should be a given."</strong></p>
+      <p class="brand-quote"><strong>"Your property is not just cleaned. It is cared for."</strong></p>
     </div>
   </div>
 </section>
@@ -767,12 +845,12 @@ section{padding:100px 0}
       <span class="section-label">Social Proof</span>
       <h2>What Our Clients Say</h2>
       <div class="section-divider"></div>
-      <p class="sub">Real clients, real results. See what families, hosts, and business owners in Atlanta are saying.</p>
+      <p class="sub">Trusted by professionals, families, Airbnb hosts, and property owners who expect a higher standard of care.</p>
     </div>
     <div class="reviews-grid">
       <div class="review-card fade-in">
         <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <p class="review-text">"My guests keep commenting on how spotless the place is. Turnovers are stress-free now — they show up, get it done, and everything looks amazing every time."</p>
+        <p class="review-text">"The level of detail feels like walking into a luxury hotel. My guests keep commenting on how immaculate everything looks. Portside completely changed my review scores."</p>
         <div class="review-author">
           <div class="review-avatar">SL</div>
           <div><p class="review-name">Sarah L.</p><p class="review-role">Airbnb Host · Atlanta, GA</p></div>
@@ -788,7 +866,7 @@ section{padding:100px 0}
       </div>
       <div class="review-card fade-in">
         <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <p class="review-text">"I've tried a few cleaning companies and nothing stuck. Portside is the first one where I don't have to double-check anything after they leave. Just done right."</p>
+        <p class="review-text">"Finally a cleaning company that truly understands presentation. It's not just clean — it looks and feels different. I notice the details every single time."</p>
         <div class="review-author">
           <div class="review-avatar">JW</div>
           <div><p class="review-name">Jennifer W.</p><p class="review-role">Homeowner · Buckhead</p></div>
@@ -803,18 +881,18 @@ section{padding:100px 0}
         </div>
       </div>
     </div>
-    <div class="proof-grid fade-in" style="margin-top:32px">
-      <div class="proof-card">
-        <img src="images/work-kitchen.png" alt="Portside Clean - Kitchen">
-        <div class="proof-label">Kitchen Clean <span class="proof-location">— Atlanta, GA</span></div>
+    <div class="review-video-bar fade-in">
+      <div class="video-card">
+        <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        <span>Sarah — Airbnb Host</span>
       </div>
-      <div class="proof-card">
-        <img src="images/work-airbnb.png" alt="Portside Clean - Airbnb">
-        <div class="proof-label">Airbnb Turnover <span class="proof-location">— Midtown, Atlanta</span></div>
+      <div class="video-card">
+        <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        <span>Jennifer — Homeowner</span>
       </div>
-      <div class="proof-card">
-        <img src="images/work-office.png" alt="Portside Clean - Office">
-        <div class="proof-label">Office Space <span class="proof-location">— Sandy Springs, GA</span></div>
+      <div class="video-card">
+        <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        <span>Marcus — Property Manager</span>
       </div>
     </div>
   </div>
@@ -828,8 +906,8 @@ section{padding:100px 0}
         <span class="section-label">Join Our Team</span>
         <h2>Work With Us</h2>
         <div class="section-divider"></div>
-        <p>We're always looking for reliable, detail-oriented people who take pride in doing a great job.</p>
-        <p>At Portside, you're part of a team that respects your time — with fair pay, flexible hours, and a supportive environment from day one.</p>
+        <p>We're always looking for detail-oriented professionals who share our passion for hospitality excellence.</p>
+        <p>At Portside, you're not just a cleaner. You're part of a team that delivers luxury experiences — with the training, tools, and support to match.</p>
         <div class="careers-perks">
           <span class="perk">Competitive pay &amp; flexible schedules</span>
           <span class="perk">Professional training provided</span>
@@ -879,10 +957,10 @@ section{padding:100px 0}
   <div class="container">
     <div class="cta-inner fade-in">
       <span class="cta-tag">Atlanta, GA &amp; Surrounding Areas</span>
-      <h2>Ready for a<br>Cleaner Space?</h2>
-      <p>Get a free estimate in seconds. No contracts, no commitments — just a clean you can count on, every time. Serving all of Atlanta and surrounding areas.</p>
+      <h2>Ready to Experience<br>Hotel-Level Cleaning?</h2>
+      <p>Let Portside Hospitality Cleaning transform your space with professionalism, care, and hospitality excellence. No contracts required. Satisfaction guaranteed.</p>
       <div class="cta-buttons">
-        <a href="#quote" class="btn btn-primary">Get a Free Estimate →</a>
+        <a href="#" class="btn btn-primary" onclick="openModal();return false;">Get a Free Estimate →</a>
         <a href="tel:+1XXXXXXXXXX" class="btn btn-outline">📞 Call Our Team</a>
       </div>
       <p class="guarantee">Satisfaction not met? We return — free of charge.</p>
@@ -896,8 +974,8 @@ section{padding:100px 0}
     <div class="footer-grid">
       <div>
         <div class="footer-brand-name">PORTSIDE</div>
-        <span class="footer-brand-sub">Professional Cleaning</span>
-        <p class="footer-tagline">Reliable cleaning for every space in Atlanta.</p>
+        <span class="footer-brand-sub">Hospitality Cleaning</span>
+        <p class="footer-tagline">Bringing Hotel-Level Care to Your Home.</p>
         <div class="footer-social">
           <a href="#" class="social-btn" aria-label="Instagram">
             <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
@@ -951,7 +1029,7 @@ section{padding:100px 0}
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copyright">© 2025 Portside Professional Cleaning · All rights reserved</p>
+      <p class="footer-copyright">© 2025 Portside Hospitality Cleaning · All rights reserved</p>
       <div class="footer-bottom-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
@@ -1011,6 +1089,27 @@ function calcPrice(){
   const finalHi = Math.round(hi * mult / 10) * 10;
   document.getElementById('priceValue').textContent = '$' + finalLo + ' – $' + finalHi;
 }
+
+// ── BOOKING MODAL ─────────────────────────────────────────────
+function openModal(){
+  document.getElementById('bookingModal').classList.add('open');
+  document.getElementById('modalForm').style.display='block';
+  document.getElementById('modalSuccess').style.display='none';
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('bookingModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function submitBooking(){
+  const name  = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  if(!name || !phone || !email){ alert('Please fill in your name, phone, and email.'); return; }
+  document.getElementById('modalForm').style.display='none';
+  document.getElementById('modalSuccess').style.display='block';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
 
 // ── SMOOTH ANCHOR SCROLL ──────────────────────────────────────
 document.querySelectorAll('a[href^="#"]').forEach(a => {

@@ -58,6 +58,32 @@
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WGG8SQK8');</script>
 <!-- End Google Tag Manager -->
+<!-- Google Ads Conversion Tracking -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18244942689"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18244942689');
+</script>
+<!-- Event snippet for Clique em SMS conversion -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18244942689/oqQUCM-6mOkcEOH27vtD',
+      'value': 1.0,
+      'currency': 'BRL',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+<!-- End Google Ads Conversion Tracking -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -1146,6 +1172,8 @@ function submitBooking(){
   const zipcode = document.getElementById('f-zipcode').value.trim();
   const info    = document.getElementById('f-info').value.trim();
   if(!name || !phone || !email || !zipcode){ alert('Please fill in all required fields.'); return; }
+
+  gtag_report_conversion();
 
   fetch('https://new-backend.botconversa.com.br/api/v1/webhooks-automation/catch/100434/2zKCNWt5Eklt/', {
     method: 'POST',

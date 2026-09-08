@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://portsideclean.com/sitemap.xml
+Sitemap: https://www.portsideclean.com/sitemap.xml

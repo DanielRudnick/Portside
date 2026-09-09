@@ -1,4 +1,11 @@
 (function(){
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  const gtm=document.createElement('script');
+  gtm.async=true;
+  gtm.src='https://www.googletagmanager.com/gtm.js?id=GTM-WGG8SQK8';
+  document.head.appendChild(gtm);
+
   const body=document.body;
   const form=document.getElementById('booking-form');
   const success=document.getElementById('form-success');

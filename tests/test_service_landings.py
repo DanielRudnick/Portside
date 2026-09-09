@@ -8,6 +8,12 @@ PAGES = {
     "Move-In / Move-Out Cleaning": ROOT / "move-in-move-out-cleaning-atlanta-ga.html",
 }
 
+CLEAN_ROUTE_INDEXES = {
+    "House Cleaning": ROOT / "house-cleaning-services-atlanta-ga" / "index.html",
+    "Deep Cleaning": ROOT / "deep-cleaning-services-atlanta-ga" / "index.html",
+    "Move-In / Move-Out Cleaning": ROOT / "move-in-move-out-cleaning-atlanta-ga" / "index.html",
+}
+
 NAV_TARGETS = [
     "/house-cleaning-services-atlanta-ga",
     "/deep-cleaning-services-atlanta-ga",
@@ -22,7 +28,7 @@ CANONICALS = {
 
 
 def read(path: Path) -> str:
-    assert path.exists(), f"Missing expected landing page: {path.name}"
+    assert path.exists(), f"Missing expected landing page: {path}"
     return path.read_text(encoding="utf-8")
 
 
@@ -41,6 +47,14 @@ def test_pages_exist_and_share_conversion_contract():
         assert 'src="/service-landing.js"' in html
         for target in NAV_TARGETS:
             assert target in html, f"{service}: nav is missing {target}"
+
+
+def test_clean_routes_exist_as_physical_index_files():
+    for service, index_path in CLEAN_ROUTE_INDEXES.items():
+        html = read(index_path)
+        assert CANONICALS[service] in html, f"{service}: directory index canonical is wrong"
+        assert 'href="#estimate"' in html, f"{service}: directory index CTA missing"
+        assert "$115" in html, f"{service}: directory index minimum price is wrong"
 
 
 def test_shared_script_preserves_tracking_and_submission():
@@ -74,21 +88,14 @@ def test_sitemap_lists_new_campaign_urls_only():
     assert "airbnb-cleaning-atlanta" not in xml
 
 
-def test_cloudflare_routes_extensionless_campaign_urls():
-    redirects = read(ROOT / "_redirects")
-    assert "/house-cleaning-services-atlanta-ga /house-cleaning-services-atlanta-ga.html 200" in redirects
-    assert "/deep-cleaning-services-atlanta-ga /deep-cleaning-services-atlanta-ga.html 200" in redirects
-    assert "/move-in-move-out-cleaning-atlanta-ga /move-in-move-out-cleaning-atlanta-ga.html 200" in redirects
-
-
 if __name__ == "__main__":
     tests = [
         test_pages_exist_and_share_conversion_contract,
+        test_clean_routes_exist_as_physical_index_files,
         test_shared_script_preserves_tracking_and_submission,
         test_each_page_has_unique_search_intent,
         test_root_is_new_house_cleaning_entry,
         test_sitemap_lists_new_campaign_urls_only,
-        test_cloudflare_routes_extensionless_campaign_urls,
     ]
     for test in tests:
         test()

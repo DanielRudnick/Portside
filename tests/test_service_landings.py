@@ -27,6 +27,7 @@ CANONICALS = {
 }
 
 APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzVyCQu0njJcM3vJzAwRavQf8kj7nbEloxoGttWIrlmJDoFKyvd0iaaTLdOyxfPX2J9/exec"
+FORM_SCRIPT = "/service-landing-v2.js"
 
 
 def read(path: Path) -> str:
@@ -46,7 +47,7 @@ def test_pages_exist_and_share_conversion_contract():
         assert "+14046410139" in html
         assert "portsidecleanusa@gmail.com" in html
         assert "AW-18244942689/oqQUCM-6mOkcEOH27vtD" in html
-        assert 'src="/service-landing.js"' in html
+        assert f'src="{FORM_SCRIPT}"' in html, f"{service}: must use cache-busted form script"
         for target in NAV_TARGETS:
             assert target in html, f"{service}: nav is missing {target}"
 
@@ -57,10 +58,11 @@ def test_clean_routes_exist_as_physical_index_files():
         assert CANONICALS[service] in html, f"{service}: directory index canonical is wrong"
         assert 'href="#estimate"' in html, f"{service}: directory index CTA missing"
         assert "$115" in html, f"{service}: directory index minimum price is wrong"
+        assert f'src="{FORM_SCRIPT}"' in html, f"{service}: clean route must use cache-busted form script"
 
 
 def test_shared_script_preserves_tracking_and_submission():
-    js = read(ROOT / "service-landing.js")
+    js = read(ROOT / "service-landing-v2.js")
     assert "currency:'USD'" in js
     assert "GTM-WGG8SQK8" in js
     assert "body.dataset.conversion" in js
@@ -69,7 +71,7 @@ def test_shared_script_preserves_tracking_and_submission():
 
 
 def test_shared_script_sends_leads_to_google_sheets():
-    js = read(ROOT / "service-landing.js")
+    js = read(ROOT / "service-landing-v2.js")
     assert APPS_SCRIPT_URL in js
     assert "URLSearchParams" in js
     assert "mode:'no-cors'" in js
@@ -91,6 +93,15 @@ def test_shared_script_sends_leads_to_google_sheets():
         assert field in js, f"Google Sheets payload missing {field}"
 
 
+def test_botconversa_receives_normalized_us_phone_and_legacy_payload():
+    js = read(ROOT / "service-landing-v2.js")
+    assert "normalizeUsPhone" in js
+    assert "'+1'+digits" in js
+    assert "botPayload" in js
+    assert "additional_info:info" in js
+    assert "JSON.stringify(botPayload)" in js
+
+
 def test_each_page_has_unique_search_intent():
     for service, path in PAGES.items():
         html = read(path)
@@ -104,6 +115,7 @@ def test_root_is_new_house_cleaning_entry():
     assert "House Cleaning" in html
     assert "$115" in html
     assert 'href="#estimate"' in html
+    assert f'src="{FORM_SCRIPT}"' in html
 
 
 def test_sitemap_lists_new_campaign_urls_only():
@@ -119,6 +131,7 @@ if __name__ == "__main__":
         test_clean_routes_exist_as_physical_index_files,
         test_shared_script_preserves_tracking_and_submission,
         test_shared_script_sends_leads_to_google_sheets,
+        test_botconversa_receives_normalized_us_phone_and_legacy_payload,
         test_each_page_has_unique_search_intent,
         test_root_is_new_house_cleaning_entry,
         test_sitemap_lists_new_campaign_urls_only,

@@ -6,6 +6,7 @@
   gtm.src='https://www.googletagmanager.com/gtm.js?id=GTM-WGG8SQK8';
   document.head.appendChild(gtm);
 
+  const GOOGLE_SHEETS_WEBAPP='https://script.google.com/macros/s/AKfycbzVyCQu0njJcM3vJzAwRavQf8kj7nbEloxoGttWIrlmJDoFKyvd0iaaTLdOyxfPX2J9/exec';
   const body=document.body;
   const form=document.getElementById('booking-form');
   const success=document.getElementById('form-success');
@@ -32,6 +33,32 @@
   if(!form) return;
 
   const value=id=>document.getElementById(id)?.value.trim()||'';
+  const params=new URLSearchParams(window.location.search);
+
+  const sendToGoogleSheets=lead=>{
+    const sheetPayload=new URLSearchParams({
+      timestamp:new Date().toISOString(),
+      name:lead.name,
+      phone:lead.phone,
+      email:lead.email,
+      address:lead.address,
+      zip_code:lead.zip_code,
+      additional_info:lead.additional_info,
+      service:lead.service,
+      page_url:lead.page_url,
+      utm_source:params.get('utm_source')||'',
+      utm_medium:params.get('utm_medium')||'',
+      utm_campaign:params.get('utm_campaign')||'',
+      utm_content:params.get('utm_content')||'',
+      gclid:params.get('gclid')||''
+    });
+
+    return fetch(GOOGLE_SHEETS_WEBAPP,{
+      method:'POST',
+      mode:'no-cors',
+      body:sheetPayload
+    });
+  };
 
   form.addEventListener('submit',async(event)=>{
     event.preventDefault();
@@ -53,7 +80,33 @@
     button.disabled=true;
     button.textContent='Sending...';
 
+    const lead={
+      name,
+      phone,
+      email,
+      address,
+      zip_code:zipcode,
+      additional_info:info,
+      service:body.dataset.service,
+      page_url:window.location.href
+    };
+
     try{
+      const sheetsRequest=sendToGoogleSheets(lead).catch(error=>{
+        console.error('Google Sheets lead capture failed',error);
+        return null;
+      });
+
+      const response=await fetch(body.dataset.webhook,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(lead)
+      });
+
+      if(!response.ok) throw new Error('Request failed');
+
+      await sheetsRequest;
+
       if(typeof window.gtag==='function'){
         window.gtag('event','conversion',{
           send_to:body.dataset.conversion,
@@ -62,22 +115,11 @@
         });
       }
 
-      const response=await fetch(body.dataset.webhook,{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({
-          name,
-          phone,
-          email,
-          address,
-          zip_code:zipcode,
-          additional_info:info,
-          service:body.dataset.service,
-          page_url:window.location.href
-        })
+      window.dataLayer.push({
+        event:'form_submit_success',
+        service:body.dataset.service,
+        lead_type:'form'
       });
-
-      if(!response.ok) throw new Error('Request failed');
 
       form.style.display='none';
       success.style.display='block';

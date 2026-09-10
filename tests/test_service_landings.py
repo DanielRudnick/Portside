@@ -26,6 +26,8 @@ CANONICALS = {
     "Move-In / Move-Out Cleaning": "https://www.portsideclean.com/move-in-move-out-cleaning-atlanta-ga",
 }
 
+APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzVyCQu0njJcM3vJzAwRavQf8kj7nbEloxoGttWIrlmJDoFKyvd0iaaTLdOyxfPX2J9/exec"
+
 
 def read(path: Path) -> str:
     assert path.exists(), f"Missing expected landing page: {path}"
@@ -66,6 +68,29 @@ def test_shared_script_preserves_tracking_and_submission():
     assert "service:body.dataset.service" in js
 
 
+def test_shared_script_sends_leads_to_google_sheets():
+    js = read(ROOT / "service-landing.js")
+    assert APPS_SCRIPT_URL in js
+    assert "URLSearchParams" in js
+    assert "mode:'no-cors'" in js
+    for field in [
+        "name",
+        "phone",
+        "email",
+        "address",
+        "zip_code",
+        "additional_info",
+        "service",
+        "page_url",
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_content",
+        "gclid",
+    ]:
+        assert field in js, f"Google Sheets payload missing {field}"
+
+
 def test_each_page_has_unique_search_intent():
     for service, path in PAGES.items():
         html = read(path)
@@ -93,6 +118,7 @@ if __name__ == "__main__":
         test_pages_exist_and_share_conversion_contract,
         test_clean_routes_exist_as_physical_index_files,
         test_shared_script_preserves_tracking_and_submission,
+        test_shared_script_sends_leads_to_google_sheets,
         test_each_page_has_unique_search_intent,
         test_root_is_new_house_cleaning_entry,
         test_sitemap_lists_new_campaign_urls_only,

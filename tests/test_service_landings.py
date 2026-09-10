@@ -102,6 +102,13 @@ def test_botconversa_receives_normalized_us_phone_and_legacy_payload():
     assert "JSON.stringify(botPayload)" in js
 
 
+def test_success_state_offers_direct_sms_cta():
+    js = read(ROOT / "service-landing-v2.js")
+    assert "sms:+14046410139" in js
+    assert "Text Portside now" in js
+    assert "success.appendChild" in js
+
+
 def test_each_page_has_unique_search_intent():
     for service, path in PAGES.items():
         html = read(path)
@@ -132,6 +139,7 @@ if __name__ == "__main__":
         test_shared_script_preserves_tracking_and_submission,
         test_shared_script_sends_leads_to_google_sheets,
         test_botconversa_receives_normalized_us_phone_and_legacy_payload,
+        test_success_state_offers_direct_sms_cta,
         test_each_page_has_unique_search_intent,
         test_root_is_new_house_cleaning_entry,
         test_sitemap_lists_new_campaign_urls_only,

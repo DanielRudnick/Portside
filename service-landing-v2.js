@@ -42,6 +42,18 @@
     return '';
   };
 
+  const ensureSmsCta=()=>{
+    if(!success||success.querySelector('.success-sms-cta')) return;
+    const smsLink=document.createElement('a');
+    smsLink.href='sms:+14046410139';
+    smsLink.className='btn btn-cyan success-sms-cta';
+    smsLink.textContent='Text Portside now →';
+    smsLink.style.marginTop='18px';
+    smsLink.style.display='inline-flex';
+    smsLink.setAttribute('aria-label','Text Portside Clean at (404) 641-0139');
+    success.appendChild(smsLink);
+  };
+
   const sendToGoogleSheets=lead=>{
     const sheetPayload=new URLSearchParams({
       timestamp:new Date().toISOString(),
@@ -137,6 +149,7 @@
       });
 
       form.style.display='none';
+      ensureSmsCta();
       success.style.display='block';
       success.scrollIntoView({behavior:'smooth',block:'center'});
     }catch(error){
